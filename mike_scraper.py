@@ -37,17 +37,17 @@ class MikeBot:
 
         time.sleep(5)
     
-    def generate_random_president(self):
-        with open("./metadata/presidents.txt") as f:
+    def generate_random_query(self):
+        with open("./metadata/queries.txt") as f:
             lines = [line.strip() for line in f.readlines()]
         return random.choice(lines)
 
     def bing_searches(self, num):
         already_searched = set()
-        for i in range(num+1): # first search doesn't get points for some reason
-            query = self.generate_random_president()
+        for i in range(num):
+            query = self.generate_random_query()
             while query in already_searched:
-                query = self.generate_random_president()
+                query = self.generate_random_query()
             self.driver.get(f"https://www.bing.com/search?q={query}")
             already_searched.add(query)
             time.sleep(random.randint(10,20))
@@ -56,6 +56,7 @@ class MikeBot:
         self.driver.get("https://rewards.microsoft.com/")
         # click 10 points button
         WebDriverWait(self.driver, self.delay).until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, '10 points'))).click()
+        time.sleep(5)
 
     def quit(self):
     	self.driver.quit()

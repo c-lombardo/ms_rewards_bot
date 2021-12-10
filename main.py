@@ -1,6 +1,7 @@
 # main.py
 import mike_scraper
 import time
+import random
 
 DRIVER_PATH = "./msedgedriver"
 DELAY = 15
@@ -16,6 +17,6 @@ PASS = lines[0]
 
 mike = mike_scraper.MikeBot(EMAIL, PASS, DRIVER_PATH, DELAY)
 mike.login()
-#mike.bing_searches(15)
+mike.bing_searches(random.randint(37,47))
 mike.rewards_quizzes()
-#mike.quit()
+mike.quit()
