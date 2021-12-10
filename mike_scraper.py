@@ -1,7 +1,6 @@
 # mike_scraper.py
 import time
 import random
-from string import ascii_letters
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -13,7 +12,6 @@ class MikeBot:
     def __init__(self, email, password, driver_path, delay):
         self.email = email
         self.password = password
-        #self.driver = webdriver.Chrome(driver_path)
         self.driver = webdriver.Edge(driver_path, capabilities={})
         self.delay = delay
 
